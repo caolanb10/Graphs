@@ -1,25 +1,28 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-public class Tree<T> {
-	Node<T> root;
-	int size = 0;
-	
-	public Tree(T rootData) {
-		root = new Node<T>();
-		root.data = rootData;
-		root.children = new ArrayList<Node<T>>();
-		root.index = size;
+
+public class Tree {
+	public Node root;
+	public Node pointer;
+
+	public Tree(String rootData) {
+		root = new Node(rootData, null);
 	}
-	public void AddRandomly(T data){
-		size++;
-		Node<T> node = new Node<T>();
-		node.index = size;
-		node.data = data;
-		node.children = new ArrayList<Node<T>>();
-		Random rand = new Random();
-		int place = rand.nextInt(size+1);
-		
-		
+
+	public void addNode(Node pointer, String data, String direction) {
+		if (direction.equals("left") || (direction.equals("right"))) {
+			if (direction == "right") {
+				Node newNode = new Node(data, pointer);
+				pointer.right = newNode;
+			} else {
+				Node newNode = new Node(data, pointer);
+				pointer.left = newNode;
+			}
+			return;
+		}
+		else{
+			return;
+		}
 	}
 }
