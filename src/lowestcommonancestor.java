@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.*;
 import java.util.Arrays;
 
 public class lowestcommonancestor {
@@ -6,7 +7,7 @@ public class lowestcommonancestor {
 
 	public static void main(String[] args) {
 		Tree tree = new Tree("A");
-		tree.addNode(tree.root,"B", "left");
+		tree.addNode(tree.root, "B", "left");
 		tree.addNode(tree.root, "C", "right");
 		tree.pointer = tree.root.left;
 		tree.addNode(tree.pointer, "D", "left");
@@ -14,32 +15,19 @@ public class lowestcommonancestor {
 		tree.pointer = tree.root.right;
 		tree.addNode(tree.pointer, "F", "left");
 		tree.addNode(tree.pointer, "G", "right");
-		Node foundNode = search("F", tree.root);
-		Node foundNode2 = search("H", tree.root);
+		Node foundNode = tree.search("F", tree.root);
+		Node foundNode2 = tree.search("H", tree.root);
 		System.out.println(foundNode.data);
 		System.out.println(foundNode2.data);
+
 	}
-	public static Node lowestCommonAncestor(String data, String data2, Tree tree){
-		
+
+	public static Node lowestCommonAncestor(String data, String data2, Tree tree) {
+		Node root = tree.root;
+		//Node foundNode = search(data, root);
+		//Node foundNode2 = search(data2, root);
+
 		return null;
 	}
-	public static Node search(String data, Node root){
-		if(root!=null)
-		{
-			String rootVal = root.data;
-			if(data == rootVal)
-				return root;
-			Node left = root.left;
-			Node right = root.right;
-			if(left!=null){
-				return search(data, left);
-			}
-			if(right!=null)
-				return search(data, right);
-		}
-		return null;
-		
-		
-	}
-	
+
 }

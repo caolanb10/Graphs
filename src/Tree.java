@@ -20,9 +20,23 @@ public class Tree {
 				pointer.left = newNode;
 			}
 			return;
-		}
-		else{
+		} else {
 			return;
 		}
 	}
+
+	public static Node search(String data, Node root) {
+		if (root != null) {
+			if (root.data.equals(data))
+				return root;
+			else {
+				Node foundNode = search(data, root.left);
+				if (foundNode == null)
+					foundNode = search(data, root.right);
+				return foundNode;
+			}
+		} else
+			return null;
+	}
+
 }
